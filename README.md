@@ -13,6 +13,7 @@ Auto Version Control fixes this. You install it once into your AI coding tool, a
 - [What Does It Actually Do?](#what-does-it-actually-do)
 - [How Does It Work Inside My AI Tool?](#how-does-it-work-inside-my-ai-tool)
 - [Do I Need to Activate It Every Time?](#do-i-need-to-activate-it-every-time)
+- [The Command: "Run Auto Version Control"](#the-command-run-auto-version-control)
 - [Install](#install)
 - [How to Verify It's Working](#how-to-verify-its-working)
 - [What You'll See When It's Working](#what-youll-see-when-its-working)
@@ -84,15 +85,33 @@ Auto Version Control installs as **a skill**.
 
 You install it once. After that, you just use your AI tool normally and it handles version control behind the scenes.
 
-### Want to check on things manually?
+---
 
-Just type this into your AI tool at any time:
+## The Command: "Run Auto Version Control"
 
-> Run auto version control
+Everything is automatic, but you also have an on-demand command you can type into your AI tool at any time:
 
-The AI will immediately check `git status`, show you what branch you're on, list recent commits, flag any problems (uncommitted changes, working on main, no version tags), and tell you what to do next. Think of it as a health check you can run whenever you want.
+> **Run auto version control**
 
-Short versions that also work: `run avc`, `auto version control`, `start version control`.
+When you say this, the AI will immediately:
+
+1. Check `git status` for uncommitted changes
+2. Show you what branch you're on
+3. List your recent commits
+4. Check for version tags
+5. Flag any problems (working on main, dirty working tree, missing tags)
+6. Tell you what to do next
+
+**You don't need to use this command for things to work.** The AI follows all the version control rules automatically in the background. This command is just a way to get a quick status report whenever you want one.
+
+**Short versions that also work:**
+
+| Command | What it does |
+|---------|-------------|
+| `run auto version control` | Full project status check |
+| `run avc` | Same thing, shorter |
+| `auto version control` | Same thing |
+| `start version control` | Same thing |
 
 ---
 
@@ -177,7 +196,13 @@ After it finishes, you'll see a summary confirming what was installed and where.
 
 ### That's it. You're done.
 
-There is no step 4. The wizard handled everything. Open your project in your AI tool and start prompting. Version control is now automatic.
+There is no step 3. The wizard handled everything. Open your project in your AI tool and start prompting. Version control is now automatic.
+
+**Optional: run a quick check to confirm it's working.** Type this into your AI tool:
+
+> Run auto version control
+
+The AI will check your project's git status, show you what branch you're on, list recent commits, and flag any issues. You can use this command anytime -- think of it as a project health check on demand.
 
 ---
 
@@ -220,9 +245,19 @@ bash setup.sh --windsurf           # Windsurf only
 
 ## How to Verify It's Working
 
-No matter which platform you're using, here are three quick tests:
+No matter which platform you're using, here's how to confirm it's working.
 
-### Test 1: Ask about the rules
+### Quickest test: Run the command
+
+Type this into your AI tool:
+
+> Run auto version control
+
+If it's working, the AI will immediately check `git status`, tell you what branch you're on, list recent commits, check for version tags, and flag anything that needs attention. If the AI doesn't know what you're talking about, the install didn't work -- re-run `bash setup.sh`.
+
+### Other ways to test
+
+#### Ask about the rules
 
 Prompt your AI agent:
 
@@ -230,7 +265,7 @@ Prompt your AI agent:
 
 It should describe: feature branches, conventional commits, semantic versioning, session discipline.
 
-### Test 2: Watch for branch creation
+#### Watch for branch creation
 
 Prompt your AI agent to make any change to your project. Before writing code, it should:
 
@@ -240,7 +275,7 @@ Prompt your AI agent to make any change to your project. Before writing code, it
 
 If it writes code directly on `main` without branching, the rules aren't loaded.
 
-### Test 3: Check the commit message
+#### Check the commit message
 
 After the agent makes a change and commits, look at the commit message. It should look like:
 
@@ -283,6 +318,14 @@ All you did was say "add a contact form." The AI handled the entire version cont
 ## Quick Reference Prompts
 
 Copy-paste these into your AI coding tool whenever you need them.
+
+### Check project status
+
+> Run auto version control
+
+The AI checks git status, branch, recent commits, version tags, and flags any problems. Use this anytime.
+
+Also works as: `run avc` | `auto version control` | `start version control`
 
 ### Build something new
 
@@ -425,7 +468,7 @@ No. The entire point is that the AI handles git for you. You just tell it what t
 
 ### Do I need to tell the AI to use version control?
 
-No. Once installed, the rules are loaded automatically every time you open the project. The AI follows them without being told.
+No. Once installed, the rules are loaded automatically every time you open the project. The AI follows them without being told. But if you ever want a status report, just type `run auto version control` and the AI will check everything and tell you where things stand.
 
 ### Does it slow down my AI agent?
 
