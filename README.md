@@ -105,8 +105,6 @@ cd auto-version-control
 
 ### Step 2: Run the setup wizard
 
-### Step 2: Run the setup wizard
-
 **Mac / Linux:**
 
 ```bash
@@ -130,10 +128,10 @@ You'll see something like this:
 ```
     +===============================================+
     |                                               |
-    |    A U T O   V E R S I O N   C O N T R O L   |
+    |    A U T O   V E R S I O N   C O N T R O L    |
     |                                               |
     |   Automatic Git for AI Coding Agents          |
-    |   v2.2.0                                      |
+    |   v2.2.1                                      |
     |                                               |
     +===============================================+
 
