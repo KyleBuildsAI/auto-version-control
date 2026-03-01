@@ -88,7 +88,7 @@ You install it once. After that, you just use your AI tool normally and it handl
 
 ## Install
 
-The setup wizard detects which AI platforms you have, lets you pick where to install, and copies everything to the right places. Three steps total.
+The setup wizard detects which AI platforms you have, lets you pick where to install, and copies everything to the right places. Two steps.
 
 ### Step 1: Download
 
@@ -96,17 +96,16 @@ Open a terminal and paste this:
 
 ```bash
 git clone https://github.com/KyleBuildsAI/auto-version-control.git
-```
-
-> **Don't have git?** Click the green **Code** button at the top of this GitHub page, then click **Download ZIP**. Unzip it somewhere you can find it.
-
-### Step 2: Go into the folder
-
-```bash
 cd auto-version-control
 ```
 
-### Step 3: Run the setup wizard
+> **Already downloaded it before?** Run `cd auto-version-control && git pull` to get the latest version.
+
+> **Don't have git?** Click the green **Code** button at the top of this GitHub page, then click **Download ZIP**. Unzip it somewhere you can find it, then open a terminal inside that folder.
+
+### Step 2: Run the setup wizard
+
+### Step 2: Run the setup wizard
 
 **Mac / Linux:**
 
