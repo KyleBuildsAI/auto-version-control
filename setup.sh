@@ -34,7 +34,7 @@ print_banner() {
   echo ""
   echo -e "${CYAN}    +===============================================+${RESET}"
   echo -e "${CYAN}    |                                               |${RESET}"
-  echo -e "${CYAN}    |${WHITE}    A U T O   V E R S I O N   C O N T R O L   ${CYAN}|${RESET}"
+  echo -e "${CYAN}    |${WHITE}    A U T O   V E R S I O N   C O N T R O L    ${CYAN}|${RESET}"
   echo -e "${CYAN}    |                                               |${RESET}"
   echo -e "${CYAN}    |${RESET}   Automatic Git for AI Coding Agents          ${CYAN}|${RESET}"
   echo -e "${CYAN}    |${DIM}   v${VERSION}                                      ${RESET}${CYAN}|${RESET}"
@@ -333,7 +333,7 @@ print_summary() {
   $SEL_WINDSURF    && stat_w="${CHECK}  Windsurf       skill + rules" || stat_w="${DASH}  Windsurf       skipped"
 
   echo -e "    ${CYAN}+===============================================+${RESET}"
-  echo -e "    ${CYAN}|${RESET}           ${BOLD}Installation Summary${RESET}               ${CYAN}|${RESET}"
+  echo -e "    ${CYAN}|${RESET}           ${BOLD}Installation Summary${RESET}                ${CYAN}|${RESET}"
   echo -e "    ${CYAN}+===============================================+${RESET}"
   echo ""
   echo -e "    ${stat_a}"
