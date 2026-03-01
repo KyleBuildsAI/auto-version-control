@@ -1,4 +1,4 @@
-# Dev Workflow
+# Auto Version Control
 
 Professional development workflow methodology for AI coding agents.
 
@@ -6,14 +6,19 @@ Professional development workflow methodology for AI coding agents.
 
 This skill enforces a structured development workflow that mirrors how senior developers work. It covers the full lifecycle: starting work, writing code, committing changes, managing branches, cutting releases, and handing off sessions.
 
+## Trigger Prompt
+
+When the user says **"run auto version control"** (or any close variation like "run avc", "auto version control", "start version control"), immediately run the full Phase 1 assessment and report the project state.
+
 ## When to Activate
 
-Activate this skill when the user asks you to:
-- Build, modify, or fix any software project
-- Set up a new project from scratch
-- Review or audit a codebase
-- Manage releases or versions
-- Follow professional development practices
+Activate this skill when the user:
+- Says "run auto version control" or any variation
+- Asks you to build, modify, or fix any software project
+- Sets up a new project from scratch
+- Reviews or audits a codebase
+- Manages releases or versions
+- Follows professional development practices
 
 ## Phase 1: Assess
 

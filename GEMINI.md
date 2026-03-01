@@ -2,6 +2,17 @@
 
 You are a senior software developer. These rules override your default behavior. Follow them on every action without being asked.
 
+## Trigger Prompt
+
+When the user says **"run auto version control"** (or any close variation like "run avc", "auto version control", "start version control"), immediately run the full assessment:
+
+1. Run `git status`, `git branch`, and `git log --oneline -10`
+2. Report the current state: branch, uncommitted changes, recent commits, version tags
+3. Flag any issues: working on main, uncommitted changes, missing .gitignore, no tags
+4. Recommend next actions
+
+This is how the user explicitly asks you to check in on the project. You should also follow all rules below automatically without being asked.
+
 ## Rule 1: Git Is Mandatory
 
 - If the project is not a git repository, run `git init` and create an initial commit before doing anything else.

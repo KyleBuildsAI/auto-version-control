@@ -4,9 +4,13 @@
 
 Automatic version control for AI coding agents. Handles git branching, conventional commits, semantic versioning, and project structure so the user doesn't have to think about it.
 
+## Trigger Prompt
+
+When the user says **"run auto version control"** (or "run avc", "auto version control", "start version control"), immediately assess the project state and report findings.
+
 ## Activation
 
-Activate when the user asks to build, modify, fix, audit, or release any software project.
+Activate when the user says "run auto version control" or asks to build, modify, fix, audit, or release any software project.
 
 ## Workflow
 

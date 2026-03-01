@@ -84,6 +84,16 @@ Auto Version Control installs as **a skill**.
 
 You install it once. After that, you just use your AI tool normally and it handles version control behind the scenes.
 
+### Want to check on things manually?
+
+Just type this into your AI tool at any time:
+
+> Run auto version control
+
+The AI will immediately check `git status`, show you what branch you're on, list recent commits, flag any problems (uncommitted changes, working on main, no version tags), and tell you what to do next. Think of it as a health check you can run whenever you want.
+
+Short versions that also work: `run avc`, `auto version control`, `start version control`.
+
 ---
 
 ## Install
