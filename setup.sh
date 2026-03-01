@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
-# DevForge Setup Wizard
-# Interactive installer for DevForge development workflow rules.
+# Auto Version Control Setup Wizard
+# Interactive installer for automatic version control rules.
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo ""
-echo "================================"
-echo "  DevForge Setup Wizard"
-echo "================================"
+echo "======================================="
+echo "  Auto Version Control Setup Wizard"
+echo "======================================="
 echo ""
-echo "DevForge teaches your AI coding agent to follow professional"
-echo "development practices: git branching, conventional commits,"
-echo "semantic versioning, clean code, and structured projects."
+echo "Auto Version Control makes your AI coding agent handle"
+echo "git branching, commits, and version numbers for you"
+echo "automatically. You just keep prompting -- it handles the rest."
 echo ""
 
 # Detect available platforms
@@ -95,16 +95,16 @@ case "$CHOICE" in
 esac
 
 echo ""
-echo "================================"
+echo "======================================="
 echo "  Setup Complete"
-echo "================================"
+echo "======================================="
 echo ""
 echo "Next steps:"
 echo "  1. Open your project in your AI coding agent"
-echo "  2. Start coding -- the agent will automatically follow"
-echo "     professional development practices"
+echo "  2. Start coding -- the agent will handle version control"
+echo "     automatically (branches, commits, version tags)"
 echo "  3. Use the prompts in QUICKREF.md if the agent needs a nudge"
 echo ""
-echo "To audit a project manually:"
+echo "To check a project's health:"
 echo "  bash $SCRIPT_DIR/.agent/skills/dev-workflow/scripts/audit.sh /path/to/project"
 echo ""

@@ -1,4 +1,4 @@
-# DevForge Quick Reference
+# Auto Version Control Quick Reference
 
 Copy-paste prompts for common development scenarios.
 

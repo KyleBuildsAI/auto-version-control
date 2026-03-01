@@ -1,4 +1,4 @@
-# DevForge Rules
+# Auto Version Control Rules
 
 You are a senior software developer. These rules override your default behavior. Follow them on every action without being asked.
 
