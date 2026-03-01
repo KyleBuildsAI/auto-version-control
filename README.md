@@ -13,9 +13,7 @@ Auto Version Control fixes this. You install it once into your AI coding tool, a
 - [What Does It Actually Do?](#what-does-it-actually-do)
 - [How Does It Work Inside My AI Tool?](#how-does-it-work-inside-my-ai-tool)
 - [Do I Need to Activate It Every Time?](#do-i-need-to-activate-it-every-time)
-- [Install for Google Antigravity](#install-for-google-antigravity)
-- [Install for Claude Code](#install-for-claude-code)
-- [Install for OpenClaw](#install-for-openclaw)
+- [Install](#install)
 - [How to Verify It's Working](#how-to-verify-its-working)
 - [What You'll See When It's Working](#what-youll-see-when-its-working)
 - [Quick Reference Prompts](#quick-reference-prompts)
@@ -52,26 +50,25 @@ This is the most important thing to understand. Auto Version Control is **not an
 
 Auto Version Control installs as **a rules file + a skill**.
 
-- **The rules file** (`GEMINI.md`) is a text file placed in your project folder. When you open a project in Antigravity, it reads this file first and treats everything in it as instructions it must follow. Auto Version Control's rules tell it to use branches, write proper commits, tag versions, and follow professional practices.
-- **The skill** (`.agent/skills/dev-workflow/`) is a folder inside your project. Antigravity automatically detects skills and loads them when they match what you're asking it to do. The dev-workflow skill contains the step-by-step methodology the AI follows (check project state, create branch, commit, verify, merge, tag, push).
+- **The rules file** (`GEMINI.md`) is installed to `~/.gemini/antigravity/GEMINI.md`. Antigravity reads this file and treats everything in it as instructions it must follow. The rules tell it to use branches, write proper commits, tag versions, and follow professional practices.
+- **The skill** is installed to `~/.gemini/antigravity/skills/auto-version-control/`. Antigravity automatically detects skills and loads them when they match what you're asking it to do. The skill contains the step-by-step version control methodology the AI follows.
 
-**You do not need to activate it, call it, or mention it.** Antigravity reads the rules file and loads the skill automatically when you open the project. Every time. It just becomes part of how the AI behaves in that project.
+**You do not need to activate it, call it, or mention it.** Antigravity reads the rules file and loads the skill automatically every time you open any project. It just becomes part of how the AI behaves.
 
 ### Claude Code
 
-Auto Version Control installs as **a rules file** (`CLAUDE.md`).
+Auto Version Control installs as **a rules file + a skill**.
 
-- Claude Code reads a file called `CLAUDE.md` from your project folder at the start of every session. Whatever is in that file becomes instructions that Claude follows automatically.
-- Auto Version Control's `CLAUDE.md` tells Claude to use feature branches, write conventional commits, tag versions, push before ending, and maintain project structure.
+- **The rules file** (`CLAUDE.md`) is installed to `~/.claude/CLAUDE.md`. Claude Code reads this file at the start of every session. Whatever is in that file becomes instructions Claude follows automatically.
+- **The skill** is installed to `~/.claude/skills/auto-version-control/`. It contains the detailed workflow methodology.
 
-**You do not need to activate it, call it, or mention it.** Claude Code reads `CLAUDE.md` every time you start a session in that project. It just works.
+**You do not need to activate it, call it, or mention it.** Claude Code reads the rules every time you start a session. It just works.
 
 ### OpenClaw
 
 Auto Version Control installs as **a skill**.
 
-- OpenClaw has a skills system. Skills live in `~/.openclaw/workspace/skills/` and are loaded automatically when they match what you're asking the agent to do.
-- The `auto-version-control` skill tells the agent how to handle git workflow, commits, versioning, and project structure.
+- **The skill** is installed to `~/.openclaw/workspace/skills/auto-version-control/`. OpenClaw has a skills system where skills are loaded automatically when they match what you're asking the agent to do. The skill contains both the rules and the workflow methodology.
 
 **You do not need to activate it, call it, or mention it.** OpenClaw detects the skill and applies it whenever you ask it to build, fix, or modify code.
 
@@ -89,28 +86,17 @@ You install it once. After that, you just use your AI tool normally and it handl
 
 ---
 
-## Install for Google Antigravity
+## Install
 
-### What you need before starting
+The setup wizard detects which AI platforms you have, lets you pick where to install, and copies everything to the right places. Three steps total.
 
-- Google Antigravity installed on your computer
-- A terminal (see the table below if you don't know how to open one)
+### Step 1: Download
 
-| OS | How to open a terminal |
-|----|----------------------|
-| **Windows** | Press `Win + R`, type `cmd`, press Enter. Or search "Terminal" in the Start menu. |
-| **Mac** | Press `Cmd + Space`, type `Terminal`, press Enter. |
-| **Linux** | Press `Ctrl + Alt + T`. |
-
-### Step 1: Download Auto Version Control
-
-Open your terminal and paste this command:
+Open a terminal and paste this:
 
 ```bash
 git clone https://github.com/KyleBuildsAI/auto-version-control.git
 ```
-
-Press Enter. You'll see it download. When it's done, you'll have a folder called `auto-version-control`.
 
 > **Don't have git?** Click the green **Code** button at the top of this GitHub page, then click **Download ZIP**. Unzip it somewhere you can find it.
 
@@ -120,216 +106,108 @@ Press Enter. You'll see it download. When it's done, you'll have a folder called
 cd auto-version-control
 ```
 
-### Step 3: Pick how you want to install
+### Step 3: Run the setup wizard
 
-You have two choices:
-
-**Option A: Install for one specific project (recommended if you're working on one thing)**
-
-This puts the version control rules inside one project folder. It only affects that project.
+**Mac / Linux:**
 
 ```bash
-bash install.sh --workspace /path/to/your/project
+bash setup.sh
 ```
 
-Replace `/path/to/your/project` with the actual path to your project folder. For example:
+**Windows (you MUST use Git Bash, not PowerShell):**
 
-```bash
-bash install.sh --workspace ~/my-app
+```powershell
+& "C:\Program Files\Git\bin\bash.exe" setup.sh
 ```
 
-This copies two things into your project:
-1. `GEMINI.md` -- the rules file Antigravity reads automatically
-2. `.agent/skills/dev-workflow/` -- the skill Antigravity loads automatically
+> **Why Git Bash on Windows?** If you type `bash` in PowerShell, Windows tries to use WSL (Windows Subsystem for Linux), which may not be set up and will give you an error like `Failed to attach disk`. Git Bash is included when you install Git for Windows and works out of the box.
 
-**Option B: Install globally (affects all projects on this machine)**
+> **Don't have Git for Windows?** Download it free from [git-scm.com](https://git-scm.com). The installer includes Git Bash.
 
-```bash
-bash install.sh --global
+### What the wizard does
+
+You'll see something like this:
+
+```
+    +===============================================+
+    |                                               |
+    |    A U T O   V E R S I O N   C O N T R O L   |
+    |                                               |
+    |   Automatic Git for AI Coding Agents          |
+    |   v2.2.0                                      |
+    |                                               |
+    +===============================================+
+
+  [1/5]  Checking dependencies
+
+    ✓  git 2.53.0
+
+  [2/5]  Detecting installed platforms
+
+    ✓  Google Antigravity    (detected)
+    -  OpenClaw              (not found)
+    ✓  Claude Code           (detected)
+    -  Cursor                (not found)
+    -  Windsurf              (not found)
+
+  [3/5]  Choose where to install
+
+    Detected platforms are pre-selected.
+    Enter numbers to toggle, then press Enter to continue.
+
+    [x] 1. Google Antigravity  (global: ~/.gemini/antigravity/skills/)
+    [ ] 2. OpenClaw            (global: ~/.openclaw/workspace/skills/)
+    [x] 3. Claude Code         (global: ~/.claude/skills/)
+    [ ] 4. Cursor              (global: ~/.cursor/skills/)
+    [ ] 5. Windsurf            (global: ~/.codeium/windsurf/skills/)
+
+    Toggle [1-5], Enter to continue, q to quit:
 ```
 
-This copies the rules to `~/GEMINI.md` and the skill to `~/.agent/skills/dev-workflow/`. Antigravity will use these rules on every project you open.
+It auto-detects your platforms and pre-selects them. Just press **Enter** to install, or type a number to toggle a platform on or off.
 
-### Step 4: Verify it worked
+After it finishes, you'll see a summary confirming what was installed and where.
 
-Open your project in Antigravity and type this prompt:
+### That's it. You're done.
 
-> What rules are you following for version control? List the git workflow rules you see in your instructions.
-
-The AI should respond by describing the version control rules: using feature branches, conventional commits, semantic versioning, etc. If it looks confused or says it doesn't have any special rules, the install didn't work -- double check that `GEMINI.md` exists in your project folder (or home folder for global install).
-
-### Step 5: Test it for real
-
-Still in Antigravity, try this prompt:
-
-> Create a simple hello world script in Python. Follow your version control rules.
-
-Watch what it does. It should:
-1. Check `git status` first
-2. Create a feature branch (like `feat/hello-world`)
-3. Write the code
-4. Commit with a message like `feat: add hello world script`
-5. Offer to merge to main and tag a version
-
-If it does all of that without you asking, Auto Version Control is working.
+There is no step 4. The wizard handled everything. Open your project in your AI tool and start prompting. Version control is now automatic.
 
 ---
 
-## Install for Claude Code
+### Where does it install to?
 
-### What you need before starting
+The wizard installs globally, so it works on **every project** you open -- not just one.
 
-- Claude Code installed (`claude` command works in your terminal)
-- A project folder you want to use it in
+| Platform | Skill installed to | Rules installed to |
+|----------|-------------------|-------------------|
+| **Google Antigravity** | `~/.gemini/antigravity/skills/auto-version-control/` | `~/.gemini/antigravity/GEMINI.md` |
+| **OpenClaw** | `~/.openclaw/workspace/skills/auto-version-control/` | *(rules are inside the skill)* |
+| **Claude Code** | `~/.claude/skills/auto-version-control/` | `~/.claude/CLAUDE.md` |
+| **Cursor** | `~/.cursor/skills/auto-version-control/` | *(rules are inside the skill)* |
+| **Windsurf** | `~/.codeium/windsurf/skills/auto-version-control/` | `~/.codeium/windsurf/memories/global_rules.md` |
 
-### Step 1: Download Auto Version Control
-
-Open your terminal and paste:
-
-```bash
-git clone https://github.com/KyleBuildsAI/auto-version-control.git
-```
-
-### Step 2: Go into the folder
-
-```bash
-cd auto-version-control
-```
-
-### Step 3: Copy the rules file into your project
-
-Claude Code reads a file called `CLAUDE.md` from your project folder. Copy the rules file there:
-
-```bash
-cp GEMINI.md /path/to/your/project/CLAUDE.md
-```
-
-Replace `/path/to/your/project` with your actual project path. For example:
-
-```bash
-cp GEMINI.md ~/my-app/CLAUDE.md
-```
-
-That's it. That one file is all Claude Code needs.
-
-> **Important:** If your project already has a `CLAUDE.md`, you don't want to overwrite it. Instead, append the rules to the end of your existing file:
-> ```bash
-> cat GEMINI.md >> ~/my-app/CLAUDE.md
-> ```
-
-### Step 4: Verify it worked
-
-Open your project folder in Claude Code:
-
-```bash
-cd ~/my-app
-claude
-```
-
-Then type this prompt:
-
-> What version control rules are you following? List them.
-
-Claude should describe the rules: feature branches, conventional commits, semantic versioning, session discipline, etc. If it doesn't know what you're talking about, check that `CLAUDE.md` exists in the project root.
-
-### Step 5: Test it for real
-
-Try this prompt in Claude Code:
-
-> Create a simple hello world script in Python. Follow your version control rules.
-
-Watch for:
-1. It checks `git status` first
-2. It creates a feature branch
-3. It writes the code
-4. It commits with a conventional message like `feat: add hello world script`
-5. It offers to merge and tag a version
-
-If it does this automatically, it's working.
+If a rules file already exists, the wizard asks whether to append, replace, or skip -- so it won't overwrite your existing settings.
 
 ---
 
-## Install for OpenClaw
+### Alternative: One-Line Install (Mac/Linux)
 
-### What you need before starting
-
-- OpenClaw installed and running
-- Access to your OpenClaw workspace folder (usually `~/.openclaw/workspace/`)
-
-### Step 1: Download Auto Version Control
-
-Open your terminal and paste:
+This downloads and runs the wizard automatically:
 
 ```bash
-git clone https://github.com/KyleBuildsAI/auto-version-control.git
+curl -sSL https://raw.githubusercontent.com/KyleBuildsAI/auto-version-control/main/setup.sh | bash
 ```
 
-### Step 2: Go into the folder
+### Alternative: Non-Interactive Install (scripting/CI)
 
 ```bash
-cd auto-version-control
+bash setup.sh --all                # Install to all detected platforms
+bash setup.sh --antigravity        # Google Antigravity only
+bash setup.sh --openclaw           # OpenClaw only
+bash setup.sh --claude             # Claude Code only
+bash setup.sh --cursor             # Cursor only
+bash setup.sh --windsurf           # Windsurf only
 ```
-
-### Step 3: Install the OpenClaw skill
-
-```bash
-bash install.sh --openclaw
-```
-
-This copies the skill to `~/.openclaw/workspace/skills/auto-version-control/`. OpenClaw will automatically detect and load it.
-
-**Or copy manually if you prefer:**
-
-```bash
-mkdir -p ~/.openclaw/workspace/skills/auto-version-control/scripts
-cp .openclaw/skills/auto-version-control/skill.md ~/.openclaw/workspace/skills/auto-version-control/skill.md
-cp .openclaw/skills/auto-version-control/scripts/audit.sh ~/.openclaw/workspace/skills/auto-version-control/scripts/audit.sh
-chmod +x ~/.openclaw/workspace/skills/auto-version-control/scripts/audit.sh
-```
-
-### Step 4: Verify the files are in place
-
-Run this command to confirm the skill was installed:
-
-```bash
-ls -la ~/.openclaw/workspace/skills/auto-version-control/
-```
-
-You should see:
-
-```
-skill.md
-scripts/
-```
-
-And inside scripts:
-
-```bash
-ls ~/.openclaw/workspace/skills/auto-version-control/scripts/
-```
-
-Should show:
-
-```
-audit.sh
-```
-
-If both files are there, the install is complete.
-
-### Step 5: Test it for real
-
-Ask your OpenClaw agent to build something:
-
-> Build me a simple Python hello world project with proper version control.
-
-Watch for:
-1. It initializes a git repo
-2. It creates a feature branch
-3. It writes the code
-4. It commits with a conventional message
-5. It merges and tags a version
-
-If it does this, the skill is loaded and working.
 
 ---
 
@@ -591,22 +469,39 @@ It works with other models too, but larger models follow the rules more reliably
 
 | File | Where it goes | What it does |
 |------|--------------|--------------|
-| `GEMINI.md` | Your project root (or `~/`) | Rules file. Antigravity reads this first and follows all instructions in it. Contains 9 rules covering git workflow, commits, versioning, code quality, structure, testing, sessions, PRs, and safety. |
-| `.agent/skills/dev-workflow/SKILL.md` | Your project root (or `~/.agent/`) | Skill definition. Describes a 7-phase workflow (Assess, Plan, Implement, Commit, Verify, Release, Handoff) that the AI follows step by step. |
-| `.agent/skills/dev-workflow/scripts/audit.sh` | Same as above | Standalone audit script. Checks your project against 15+ standards. |
+| `GEMINI.md` | `~/.gemini/antigravity/GEMINI.md` | Rules file. Antigravity reads this and follows all instructions in it. Contains 9 rules covering git workflow, commits, versioning, code quality, structure, testing, sessions, PRs, and safety. |
+| `SKILL.md` | `~/.gemini/antigravity/skills/auto-version-control/` | Skill definition. Describes a 7-phase workflow (Assess, Plan, Implement, Commit, Verify, Release, Handoff). |
+| `audit.sh` | `~/.gemini/antigravity/skills/auto-version-control/scripts/` | Project health check script. Checks 15+ standards. |
 
 ### For Claude Code
 
 | File | Where it goes | What it does |
 |------|--------------|--------------|
-| `CLAUDE.md` | Your project root | Rules file. Claude Code reads this at the start of every session and follows all instructions in it. Same content as GEMINI.md. |
+| `CLAUDE.md` | `~/.claude/CLAUDE.md` | Rules file. Claude Code reads this at the start of every session. Same content as GEMINI.md. |
+| `SKILL.md` | `~/.claude/skills/auto-version-control/` | Skill definition with the 7-phase workflow. |
+| `audit.sh` | `~/.claude/skills/auto-version-control/scripts/` | Project health check script. |
 
 ### For OpenClaw
 
 | File | Where it goes | What it does |
 |------|--------------|--------------|
-| `skill.md` | `~/.openclaw/workspace/skills/auto-version-control/` | Skill definition. OpenClaw detects and loads this when you ask it to build, fix, or modify code. |
-| `scripts/audit.sh` | Same as above | Standalone audit script. |
+| `skill.md` | `~/.openclaw/workspace/skills/auto-version-control/` | Skill definition with rules and workflow. |
+| `audit.sh` | `~/.openclaw/workspace/skills/auto-version-control/scripts/` | Project health check script. |
+
+### For Cursor
+
+| File | Where it goes | What it does |
+|------|--------------|--------------|
+| `SKILL.md` | `~/.cursor/skills/auto-version-control/` | Skill definition with the 7-phase workflow. |
+| `audit.sh` | `~/.cursor/skills/auto-version-control/scripts/` | Project health check script. |
+
+### For Windsurf
+
+| File | Where it goes | What it does |
+|------|--------------|--------------|
+| `global_rules.md` | `~/.codeium/windsurf/memories/global_rules.md` | Rules file. Windsurf reads this for global instructions. |
+| `SKILL.md` | `~/.codeium/windsurf/skills/auto-version-control/` | Skill definition with the 7-phase workflow. |
+| `audit.sh` | `~/.codeium/windsurf/skills/auto-version-control/scripts/` | Project health check script. |
 
 </details>
 
