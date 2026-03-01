@@ -315,13 +315,13 @@ Auto Version Control includes a health check script you can run on any project. 
 ### How to run it
 
 ```bash
-bash /path/to/auto-version-control/.agent/skills/dev-workflow/scripts/audit.sh /path/to/your/project
+bash /path/to/auto-version-control/.agent/skills/auto-version-control/scripts/audit.sh /path/to/your/project
 ```
 
 For example, if you cloned auto-version-control to your home folder and want to check a project called `my-app`:
 
 ```bash
-bash ~/auto-version-control/.agent/skills/dev-workflow/scripts/audit.sh ~/my-app
+bash ~/auto-version-control/.agent/skills/auto-version-control/scripts/audit.sh ~/my-app
 ```
 
 ### What it checks
@@ -532,7 +532,7 @@ auto-version-control/
   install.sh                         # Quick installer with flags
   .agent/                            # Antigravity integration
     skills/
-      dev-workflow/
+      auto-version-control/
         SKILL.md                     # 7-phase workflow methodology
         scripts/
           audit.sh                   # Project health check script

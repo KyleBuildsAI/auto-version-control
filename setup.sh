@@ -217,10 +217,10 @@ do_install_antigravity() {
 
   mkdir -p "$skills_dir/auto-version-control/scripts"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
   print_item "Copying version control skill...      ${CHECK}"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
   chmod +x "$skills_dir/auto-version-control/scripts/audit.sh"
   print_item "Copying audit script...               ${CHECK}"
 
@@ -255,10 +255,10 @@ do_install_claude() {
 
   mkdir -p "$skills_dir/auto-version-control/scripts"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
   print_item "Copying version control skill...      ${CHECK}"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
   chmod +x "$skills_dir/auto-version-control/scripts/audit.sh"
   print_item "Copying audit script...               ${CHECK}"
 
@@ -275,10 +275,10 @@ do_install_cursor() {
 
   mkdir -p "$skills_dir/auto-version-control/scripts"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
   print_item "Copying version control skill...      ${CHECK}"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
   chmod +x "$skills_dir/auto-version-control/scripts/audit.sh"
   print_last "Copying audit script...               ${CHECK}"
 
@@ -293,10 +293,10 @@ do_install_windsurf() {
 
   mkdir -p "$skills_dir/auto-version-control/scripts"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/SKILL.md" "$skills_dir/auto-version-control/SKILL.md"
   print_item "Copying version control skill...      ${CHECK}"
 
-  cp "$SCRIPT_DIR/.agent/skills/dev-workflow/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
+  cp "$SCRIPT_DIR/.agent/skills/auto-version-control/scripts/audit.sh" "$skills_dir/auto-version-control/scripts/audit.sh"
   chmod +x "$skills_dir/auto-version-control/scripts/audit.sh"
   print_item "Copying audit script...               ${CHECK}"
 
