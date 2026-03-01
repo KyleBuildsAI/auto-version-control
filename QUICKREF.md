@@ -4,6 +4,16 @@ Copy-paste prompts for common development scenarios.
 
 ---
 
+## Check Project Status
+
+> Run auto version control
+
+The AI will check git status, current branch, recent commits, version tags, and flag any issues. Use this anytime you want a quick health check.
+
+Short versions: `run avc`, `auto version control`, `start version control`.
+
+---
+
 ## Starting a New Feature
 
 > I need to add [describe feature]. Create a feature branch, implement it with proper structure, commit with conventional messages, and push when done. Follow professional development practices throughout.
