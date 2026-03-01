@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# DevForge Project Audit
+# Auto Version Control Project Audit
 # Scans a project for professional development standards compliance.
 # Exit codes: 0 = all clear, 1 = warnings found, 2 = critical issues found
 
@@ -42,7 +42,7 @@ info() {
 cd "$PROJECT_ROOT"
 
 echo ""
-echo "=== DEVFORGE PROJECT AUDIT ==="
+echo "=== AUTO VERSION CONTROL AUDIT ==="
 echo "Directory: $(pwd)"
 echo "Date: $(date '+%Y-%m-%d %H:%M:%S')"
 echo ""
