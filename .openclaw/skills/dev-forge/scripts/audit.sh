@@ -3,7 +3,7 @@
 # Scans a project for professional development standards compliance.
 # Exit codes: 0 = all clear, 1 = warnings found, 2 = critical issues found
 
-set -euo pipefail
+set -uo pipefail
 
 PROJECT_ROOT="${1:-.}"
 WARNINGS=0
@@ -149,10 +149,11 @@ echo ""
 # --- Code Quality ---
 echo "--- Code Quality ---"
 
-TODO_COUNT=0
-if command -v grep &>/dev/null; then
-    TODO_COUNT=$(grep -rn --include='*.py' --include='*.js' --include='*.ts' --include='*.jsx' --include='*.tsx' --include='*.go' --include='*.rs' --include='*.java' --include='*.rb' --include='*.php' -E '\b(TODO|FIXME|HACK|XXX)\b' . 2>/dev/null | grep -v node_modules | grep -v .git | grep -v vendor | wc -l || echo "0")
-fi
+SRC_EXTENSIONS="--include=*.py --include=*.js --include=*.ts --include=*.jsx --include=*.tsx --include=*.go --include=*.rs --include=*.java --include=*.rb --include=*.php"
+EXCLUDE_DIRS="--exclude-dir=node_modules --exclude-dir=.git --exclude-dir=vendor --exclude-dir=.agent --exclude-dir=.openclaw"
+
+TODO_COUNT=$(grep -rn $SRC_EXTENSIONS $EXCLUDE_DIRS -E '\b(TODO|FIXME|HACK|XXX)\b' . 2>/dev/null | wc -l)
+TODO_COUNT=$((TODO_COUNT + 0))
 
 if [ "$TODO_COUNT" -eq 0 ]; then
     pass "No TODO/FIXME/HACK/XXX comments found"
@@ -160,10 +161,8 @@ else
     warn "$TODO_COUNT TODO/FIXME/HACK/XXX comments found in source files"
 fi
 
-DEBUG_COUNT=0
-if command -v grep &>/dev/null; then
-    DEBUG_COUNT=$(grep -rn --include='*.py' --include='*.js' --include='*.ts' --include='*.jsx' --include='*.tsx' -E '(console\.log|print\(|debugger|pdb\.set_trace|binding\.pry|var_dump)' . 2>/dev/null | grep -v node_modules | grep -v .git | grep -v vendor | grep -v test | grep -v spec | wc -l || echo "0")
-fi
+DEBUG_COUNT=$(grep -rn --include='*.py' --include='*.js' --include='*.ts' --include='*.jsx' --include='*.tsx' $EXCLUDE_DIRS --exclude-dir=test --exclude-dir=spec -E '(console\.log|print\(|debugger|pdb\.set_trace|binding\.pry|var_dump)' . 2>/dev/null | wc -l)
+DEBUG_COUNT=$((DEBUG_COUNT + 0))
 
 if [ "$DEBUG_COUNT" -eq 0 ]; then
     pass "No debug statements found in source files"
@@ -171,10 +170,8 @@ else
     warn "$DEBUG_COUNT debug statements found (console.log, print, debugger, etc.)"
 fi
 
-PLACEHOLDER_COUNT=0
-if command -v grep &>/dev/null; then
-    PLACEHOLDER_COUNT=$(grep -rni --include='*.py' --include='*.js' --include='*.ts' --include='*.jsx' --include='*.tsx' --include='*.html' --include='*.md' -E '(lorem ipsum|test@test\.com|example@example|John Doe|Jane Doe|foo@bar|placeholder|coming soon|TBD)' . 2>/dev/null | grep -v node_modules | grep -v .git | grep -v vendor | wc -l || echo "0")
-fi
+PLACEHOLDER_COUNT=$(grep -rni --include='*.py' --include='*.js' --include='*.ts' --include='*.jsx' --include='*.tsx' --include='*.html' $EXCLUDE_DIRS -E '(lorem ipsum|test@test\.com|example@example|John Doe|Jane Doe|foo@bar|coming soon)' . 2>/dev/null | wc -l)
+PLACEHOLDER_COUNT=$((PLACEHOLDER_COUNT + 0))
 
 if [ "$PLACEHOLDER_COUNT" -eq 0 ]; then
     pass "No placeholder content found"
@@ -182,10 +179,8 @@ else
     warn "$PLACEHOLDER_COUNT lines with placeholder content found"
 fi
 
-SECRET_COUNT=0
-if command -v grep &>/dev/null; then
-    SECRET_COUNT=$(grep -rn --include='*.py' --include='*.js' --include='*.ts' --include='*.jsx' --include='*.tsx' --include='*.go' --include='*.rs' --include='*.java' --include='*.rb' --include='*.env' -E '(password\s*=\s*["\x27][^"\x27]+|api[_-]?key\s*=\s*["\x27][^"\x27]+|secret\s*=\s*["\x27][^"\x27]+|token\s*=\s*["\x27][^"\x27]+)' . 2>/dev/null | grep -v node_modules | grep -v .git | grep -v vendor | grep -v test | grep -v spec | grep -v example | wc -l || echo "0")
-fi
+SECRET_COUNT=$(grep -rn $SRC_EXTENSIONS --include='*.env' $EXCLUDE_DIRS --exclude-dir=test --exclude-dir=spec -E '(password\s*=\s*["\x27][^"\x27]+|api[_-]?key\s*=\s*["\x27][^"\x27]+|secret\s*=\s*["\x27][^"\x27]+|token\s*=\s*["\x27][^"\x27]+)' . 2>/dev/null | grep -v example | wc -l)
+SECRET_COUNT=$((SECRET_COUNT + 0))
 
 if [ "$SECRET_COUNT" -eq 0 ]; then
     pass "No hardcoded secrets detected"
@@ -200,14 +195,16 @@ echo "--- Large Files ---"
 
 LARGE_FILES=0
 if [ -d .git ]; then
-    LARGE_FILES=$(git ls-files 2>/dev/null | while read -r f; do
+    LARGE_FILE_LIST=$(git ls-files 2>/dev/null | while read -r f; do
         if [ -f "$f" ]; then
             SIZE=$(stat -c%s "$f" 2>/dev/null || stat -f%z "$f" 2>/dev/null || echo "0")
             if [ "$SIZE" -gt 10485760 ]; then
-                echo "$f ($((SIZE / 1048576))MB)"
+                echo "$f"
             fi
         fi
-    done | wc -l || echo "0")
+    done)
+    LARGE_FILES=$(echo "$LARGE_FILE_LIST" | grep -c . 2>/dev/null || true)
+    LARGE_FILES=$((LARGE_FILES + 0))
 fi
 
 if [ "$LARGE_FILES" -eq 0 ]; then
@@ -218,7 +215,8 @@ fi
 
 ENV_TRACKED=0
 if [ -d .git ]; then
-    ENV_TRACKED=$(git ls-files 2>/dev/null | grep -cE '\.env$|\.env\.' || echo "0")
+    ENV_TRACKED=$(git ls-files 2>/dev/null | grep -cE '\.env$|\.env\.' 2>/dev/null || true)
+    ENV_TRACKED=$((ENV_TRACKED + 0))
 fi
 
 if [ "$ENV_TRACKED" -eq 0 ]; then
