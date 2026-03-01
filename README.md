@@ -1,51 +1,68 @@
-# DevForge
+# Auto Version Control
 
-**Make your AI coding agent develop like a senior engineer.**
+**Automatic git version control for vibe coders.**
 
-You know the problem: you ask an AI agent to build something. It writes the code, dumps everything in one commit with the message "update files," pushes straight to main, and calls it done. No branches. No version tags. No structure. You end up cleaning up the mess yourself.
+You're building with AI. You're prompting, iterating, shipping. You shouldn't have to stop and think about git branches, commit messages, version numbers, or any of that. But without version control, one bad change can wipe out hours of work, and your project history is a mess of "update" and "fix stuff" commits that tell you nothing.
 
-DevForge fixes this. It's a drop-in add-on that forces your AI coding agent to follow professional development practices automatically: feature branches, conventional commits, semantic versioning, clean code, proper project structure, and disciplined sessions. The agent does it all without being asked.
-
----
-
-## How It Works (The Short Version)
-
-Once installed, DevForge makes your AI agent follow this workflow on every task:
-
-```
-ASSESS --> PLAN --> IMPLEMENT --> COMMIT --> VERIFY --> RELEASE
-```
-
-1. **Assess** -- The agent checks git status, current branch, and recent history before touching anything
-2. **Plan** -- It decides what to change and creates a feature branch
-3. **Implement** -- It writes clean, modular code following language conventions
-4. **Commit** -- After each logical change, it commits with a conventional message (`feat:`, `fix:`, `refactor:`, etc.)
-5. **Verify** -- It runs tests and proves the changes work
-6. **Release** -- When a milestone is reached, it tags the version and pushes
-
-No more "updated stuff" commits. No more everything-on-main chaos.
+Auto Version Control fixes this. Install it once, and your AI coding agent handles all the version control for you -- automatically. It creates branches, writes proper commit messages, tags versions, and keeps your project history clean and professional. You never have to think about it.
 
 ---
 
-## What Does DevForge Enforce?
+## What Problem Does This Solve?
 
-| Category | What the agent does automatically |
-|----------|----------------------------------|
-| **Git branching** | Creates feature branches (`feat/`, `fix/`, `refactor/`). Never commits directly to main. |
-| **Conventional commits** | Every commit follows the format: `type: description`. One logical change per commit. |
-| **Semantic versioning** | Tags milestones with `vMAJOR.MINOR.PATCH`. Branches before major versions. |
-| **Code quality** | Removes debug statements, TODOs, placeholders. Follows language style guides. Handles errors explicitly. |
-| **Project structure** | Ensures README, .gitignore, dependency file, and organized directories exist. |
-| **Secret safety** | Never hardcodes API keys or passwords. Keeps .env out of git. |
-| **Large files** | Keeps binaries, models, datasets, and videos out of git. |
-| **Session discipline** | Checks project state when starting. Commits, pushes, and summarizes when ending. |
-| **Pull requests** | Creates PRs with clear titles and summaries for merges to main. |
+If you're vibe coding (building software by prompting an AI agent), your agent probably does this:
+
+- Dumps all changes into one giant commit called "update files"
+- Works directly on the main branch (so one mistake breaks everything)
+- Never creates version tags (so you can't go back to a working version)
+- Leaves your project with no usable history
+
+**With Auto Version Control installed, your agent does this instead:**
+
+- Creates a separate branch for each feature or fix (so main always works)
+- Commits after every meaningful change with a clear message describing what happened
+- Tags milestone versions (`v1.0.0`, `v1.1.0`, `v1.2.0`) so you can always roll back
+- Pushes everything to GitHub before ending a session (so nothing is lost)
+
+You don't need to understand git. The AI handles it.
 
 ---
 
-## What Platforms Does It Work With?
+## How It Works
 
-DevForge works with all major AI coding platforms:
+Once installed, Auto Version Control gives your AI agent a set of rules it follows automatically. You just keep prompting normally. Behind the scenes, the agent:
+
+1. **Checks the project state** before making any changes
+2. **Creates a branch** so your working code stays safe on main
+3. **Writes your code** like it normally would
+4. **Commits each change** with a message like `feat: add login page` or `fix: broken checkout button`
+5. **Tests that it works** before moving on
+6. **Merges back to main** when the feature is done
+7. **Tags a version number** at milestones so you can always go back
+8. **Pushes to GitHub** so nothing is lost
+
+You don't need to tell it to do any of this. It just does it.
+
+---
+
+## What It Does For You
+
+| Without Auto Version Control | With Auto Version Control |
+|------------------------------|--------------------------|
+| Everything on one branch | Feature branches keep main safe |
+| Commit messages say "update" | Messages say exactly what changed |
+| No version numbers | Automatic `v1.0.0`, `v1.1.0`, etc. |
+| Can't undo a bad change easily | Roll back to any tagged version |
+| Unpushed code sitting on your machine | Everything pushed to GitHub automatically |
+| Debug junk left in your code | Cleaned up before every commit |
+| Secrets accidentally committed | Secrets detected and blocked |
+| No project structure | README, .gitignore, and dependencies managed |
+
+---
+
+## Supported Platforms
+
+Auto Version Control works with all major AI coding tools:
 
 | Platform | Supported |
 |----------|-----------|
@@ -55,27 +72,27 @@ DevForge works with all major AI coding platforms:
 | **Cursor** | Yes |
 | **Windsurf** | Yes |
 
-The setup wizard handles the differences between platforms automatically.
+The setup wizard detects which ones you have and installs automatically.
 
 ---
 
-## What AI Models Work Best?
+## Tested AI Models
 
-Tested with these models (Feb 2026):
+Works best with these models (Feb 2026):
 
-- **Claude Opus 4.6** -- Best overall. Follows the rules consistently across long sessions.
-- **Gemini 3.1 Pro** -- Excellent. Handles complex multi-file refactors well.
+- **Claude Opus 4.6** -- Best. Follows version control rules consistently, even in long sessions.
+- **Gemini 3.1 Pro** -- Excellent. Great with multi-file projects.
 - **Claude Sonnet 4.6** -- Good for faster iterations on smaller projects.
-
-DevForge works the same way regardless of which model you're using.
 
 ---
 
 ## Install
 
-### Quick Setup (recommended)
+### Quick Setup (recommended -- no experience needed)
 
 **Step 1: Open a terminal**
+
+Not sure how? Here's how on each operating system:
 
 | OS | How to open a terminal |
 |----|----------------------|
@@ -83,41 +100,54 @@ DevForge works the same way regardless of which model you're using.
 | **Mac** | Press `Cmd + Space`, type `Terminal`, press Enter. |
 | **Linux** | Press `Ctrl + Alt + T`. |
 
-**Step 2: Download DevForge**
+**Step 2: Download Auto Version Control**
+
+Copy and paste this entire line into your terminal and press Enter:
 
 ```bash
-git clone https://github.com/KyleBuildsAI/dev-forge.git
+git clone https://github.com/KyleBuildsAI/auto-version-control.git
 ```
 
-**Step 3: Run the setup wizard**
+This downloads Auto Version Control to a folder on your computer.
+
+**Step 3: Go into the folder and run the setup wizard**
+
+Copy and paste these lines one at a time:
 
 ```bash
-cd dev-forge
+cd auto-version-control
+```
+```bash
 bash setup.sh
 ```
 
-The wizard will:
-1. Detect which AI platforms you have installed
-2. Let you choose where to install (global, workspace, or both)
-3. Copy the rules and skills to the right locations
-4. Show you what to do next
+That's it. The setup wizard will walk you through the rest:
+1. It detects which AI platforms you have installed
+2. It lets you choose where to install
+3. It copies everything to the right places automatically
+4. It shows you what to do next when it's done
 
-> **Don't have git?** Click the green **Code** button at the top of this page, then **Download ZIP**. Unzip it, open a terminal inside the folder, and run `bash setup.sh`.
+> **Don't have git installed?** You can also download it as a ZIP file. Click the green **Code** button at the top of this page, then **Download ZIP**. Unzip it, open a terminal inside the folder, and run `bash setup.sh`.
 
 ---
 
 ### Alternative: One-Line Install
 
+If you're comfortable with the terminal, this single command downloads and runs the setup wizard automatically:
+
 ```bash
-curl -sSL https://raw.githubusercontent.com/KyleBuildsAI/dev-forge/main/setup.sh | bash
+curl -sSL https://raw.githubusercontent.com/KyleBuildsAI/auto-version-control/main/setup.sh | bash
 ```
 
 ---
 
 <details>
-<summary><strong>Advanced Install (flags for scripting)</strong></summary>
+<summary><strong>Advanced Install (for scripting and automation)</strong></summary>
+
+The `install.sh` script supports flags for direct installation:
 
 ```bash
+./install.sh                               # Interactive (same as setup.sh)
 ./install.sh --global                      # Antigravity global only
 ./install.sh --openclaw                    # OpenClaw skills only
 ./install.sh --workspace /path/to/project  # Single project only
@@ -129,13 +159,15 @@ curl -sSL https://raw.githubusercontent.com/KyleBuildsAI/dev-forge/main/setup.sh
 <details>
 <summary><strong>Manual Install (copy files yourself)</strong></summary>
 
+If you prefer to copy files manually instead of using the setup wizard:
+
 ```bash
 # For Antigravity
 cp -r .agent/ /path/to/your/project/.agent/
 cp GEMINI.md /path/to/your/project/GEMINI.md
 
 # For OpenClaw
-cp -r .openclaw/skills/dev-forge/ ~/.openclaw/workspace/skills/dev-forge/
+cp -r .openclaw/skills/auto-version-control/ ~/.openclaw/workspace/skills/auto-version-control/
 
 # For Claude Code
 cp -r .agent/ /path/to/your/project/.agent/
@@ -156,77 +188,118 @@ cp GEMINI.md /path/to/your/project/.windsurfrules
 
 ## How to Use It
 
-After installing, open your project in your AI coding agent and work normally. DevForge rules activate automatically. Here are prompts for specific scenarios.
+After installing, just use your AI coding agent normally. Auto Version Control works in the background. You don't need to change how you prompt.
+
+But if you want to be specific, here are some prompts you can copy and paste:
 
 ### Start a New Project
 
-> Set up a new [Python/Node/Go/Rust] project from scratch. Follow professional development practices: initialize git, create proper structure, add README, .gitignore, and dependency file. Make the initial commit on a feature branch, merge to main, and tag as v0.1.0.
+> Build me a [describe your app]. Set it up properly with version control from the start.
 
 ### Build a Feature
 
-> Add [describe feature]. Use a feature branch, commit after each logical change with conventional messages, verify everything works, and push when done.
+> Add [describe feature] to my project.
+
+That's it. The agent will create a branch, build it, commit, test, merge, and version tag automatically.
 
 ### Fix a Bug
 
-> There's a bug: [describe it]. Create a fix branch, find the root cause, fix it, prove the fix works, and commit with a fix: message.
+> There's a bug: [describe the problem]. Fix it.
 
-### Cut a Release
+The agent will create a fix branch, find the root cause, fix it, verify it works, and commit with a proper message.
 
-> Tag the current state as v[X.Y.Z] and create a GitHub release with notes summarizing changes since the last tag.
+### Save a Milestone
 
-### Audit a Project
+> The current version is stable. Tag it as a release.
 
-> Run a full audit of this project. Check git history, project structure, code quality, and development standards. Report findings and fix any issues.
+### Check Your Project's Health
+
+> Audit this project. Check if the version control, project structure, and code quality are up to professional standards.
 
 ### End a Session
 
-> Wrap up this session. Commit all changes, push to remote, and give me a summary of what was done, what branch we're on, and what's left.
+> Wrap up. Make sure everything is committed, pushed, and summarized.
 
 See `QUICKREF.md` for more prompts.
 
 ---
 
-## Project Audit
+## The Audit Tool
 
-DevForge includes a standalone audit script that checks any project against professional standards.
+Auto Version Control includes a standalone script that checks any project against professional standards. Think of it as a health check for your project.
 
-### Run it manually
+### How to run it
 
 ```bash
-bash .agent/skills/dev-workflow/scripts/audit.sh /path/to/project
+bash .agent/skills/dev-workflow/scripts/audit.sh /path/to/your/project
 ```
 
 ### What it checks
 
-| Check | What it looks for |
-|-------|-------------------|
-| Git repository | Is the project initialized with git? |
-| Branch hygiene | Are you on a feature branch (not main)? |
-| Clean tree | Any uncommitted changes? |
-| Conventional commits | Do recent commits follow the format? |
-| Version tags | Are there semantic version tags? |
-| README | Does it exist and have content? |
-| .gitignore | Is it present? |
-| LICENSE | Is there a license file? |
-| Dependencies | Is there a package.json, requirements.txt, etc.? |
-| TODOs | Any TODO/FIXME/HACK comments left in source? |
-| Debug statements | Any console.log, print, debugger left in? |
-| Placeholders | Any lorem ipsum, test@test.com, John Doe? |
-| Secrets | Any hardcoded passwords, API keys, tokens? |
-| Large files | Any files over 10MB tracked by git? |
-| .env tracking | Are .env files committed (they shouldn't be)? |
+| Check | What it means |
+|-------|--------------|
+| **Git initialized** | Is your project using version control at all? |
+| **Branch hygiene** | Are you working on a branch (not directly on main)? |
+| **Clean working tree** | Do you have unsaved changes sitting around? |
+| **Commit messages** | Are they descriptive, or just "update" and "fix"? |
+| **Version tags** | Are milestones tagged so you can roll back? |
+| **README** | Does your project explain what it does? |
+| **.gitignore** | Are junk files being kept out of version control? |
+| **LICENSE** | Is there a license? |
+| **Dependencies** | Are packages tracked properly? |
+| **Leftover TODOs** | Any unfinished TODO/FIXME comments in the code? |
+| **Debug statements** | Any console.log or print statements left in? |
+| **Hardcoded secrets** | Any passwords or API keys sitting in the code? |
+| **Large files** | Any huge files that shouldn't be in git? |
+| **.env files** | Are secret config files accidentally tracked? |
 
-Exit codes: `0` = all clear, `1` = warnings found, `2` = critical issues found.
+It gives you a simple pass/warn/fail report.
+
+---
+
+## What's a Version Number?
+
+If you're new to this, here's the short version.
+
+Version numbers look like this: **v1.2.3**
+
+| Part | What it means | Example |
+|------|--------------|---------|
+| **v1** (major) | Big changes that break old behavior | Redesigned the whole app |
+| **.2** (minor) | New features that don't break anything | Added a search feature |
+| **.3** (patch) | Small fixes | Fixed a typo, fixed a button |
+
+Your AI agent handles this automatically. When it finishes a feature, it bumps the minor number. When it fixes a bug, it bumps the patch number. When something big changes, it bumps the major number.
+
+This means you can always go back to any previous version if something breaks.
+
+---
+
+## What's a Conventional Commit?
+
+When your AI agent saves a change, it writes a message that starts with a type:
+
+| Type | When it's used | Example message |
+|------|---------------|-----------------|
+| `feat:` | New feature added | `feat: add dark mode toggle` |
+| `fix:` | Bug fixed | `fix: login button not responding on mobile` |
+| `refactor:` | Code reorganized (no behavior change) | `refactor: split utils into separate modules` |
+| `docs:` | Documentation updated | `docs: add install instructions to README` |
+| `style:` | Formatting/appearance change | `style: fix indentation in main.py` |
+| `test:` | Tests added or updated | `test: add unit tests for auth module` |
+| `chore:` | Maintenance (config, dependencies) | `chore: update package versions` |
+
+This makes it easy to look at a project's history and understand exactly what happened and when.
 
 ---
 
 ## OpenClaw Integration
 
-If you use OpenClaw, DevForge includes a native skill that installs automatically:
+If you use OpenClaw, Auto Version Control includes a native skill that installs automatically:
 
-- **dev-forge** -- The core development workflow skill
+- **auto-version-control** -- Handles all version control during any task
 
-The setup wizard handles OpenClaw installation. You can also install manually:
+The setup wizard handles this. You can also install manually:
 
 ```bash
 ./install.sh --openclaw
@@ -237,37 +310,29 @@ The setup wizard handles OpenClaw installation. You can also install manually:
 ## Under the Hood
 
 <details>
-<summary><strong>How DevForge works technically</strong></summary>
+<summary><strong>How it works technically</strong></summary>
 
-DevForge has three layers:
+Auto Version Control has three layers:
 
 ### Layer 1: Rules (GEMINI.md)
 
-A rules file that overrides the agent's default behavior. Key enforcements:
-
-- Must check git status before starting work
-- Must work on feature branches, never main
-- Must commit with conventional messages after each logical change
-- Must tag releases with semantic versioning
-- Must push and summarize before ending a session
-- Must follow language style conventions
-- Must remove debug statements and placeholders before committing
+A rules file that overrides your AI agent's default behavior. It contains 9 rules covering git workflow, commit format, semantic versioning, code quality, project structure, testing, session discipline, pull requests, and safety. The agent reads these rules and follows them on every action.
 
 ### Layer 2: Skill (dev-workflow)
 
-A detailed methodology the agent loads that defines a 7-phase workflow:
+A detailed 7-phase workflow methodology:
 
-1. **Assess** -- Check project state and git history
-2. **Plan** -- Decide what to change and create a branch
-3. **Implement** -- Write clean, modular code
-4. **Commit** -- Conventional commits, one change per commit
+1. **Assess** -- Check git status, current branch, recent commits
+2. **Plan** -- Decide what to change, create a feature branch
+3. **Implement** -- Write clean code following conventions
+4. **Commit** -- One logical change per commit, conventional format
 5. **Verify** -- Run tests, prove it works
-6. **Merge and Release** -- PR, merge, tag, push
-7. **Handoff** -- Commit, push, summarize
+6. **Merge and Release** -- PR, merge to main, tag version, push
+7. **Handoff** -- Commit all work, push, summarize session
 
 ### Layer 3: Audit Script (audit.sh)
 
-A bash script that scans any project for 15+ checks covering git practices, project structure, code quality, and security. Outputs a pass/warn/fail report with a summary.
+A bash script that checks 15+ standards covering git practices, project structure, code quality, and security. Runs on any project regardless of language.
 
 </details>
 
@@ -275,25 +340,25 @@ A bash script that scans any project for 15+ checks covering git practices, proj
 <summary><strong>File structure</strong></summary>
 
 ```
-dev-forge/
+auto-version-control/
   README.md                          # This file
-  GEMINI.md                          # Rules enforcing professional dev practices
+  GEMINI.md                          # Rules that make the AI follow version control
   QUICKREF.md                        # Copy-paste prompts for common scenarios
   LICENSE                            # MIT license
-  setup.sh                           # Interactive setup wizard
+  setup.sh                           # Interactive setup wizard (start here)
   install.sh                         # Quick/advanced installer
   .agent/                            # Antigravity skills
     skills/
       dev-workflow/
-        SKILL.md                     # Core dev workflow methodology (7 phases)
+        SKILL.md                     # 7-phase version control workflow
         scripts/
-          audit.sh                   # Project standards audit script
+          audit.sh                   # Project health check script
   .openclaw/                         # OpenClaw skills
     skills/
-      dev-forge/
-        skill.md                     # Dev workflow (OpenClaw format)
+      auto-version-control/
+        skill.md                     # Version control workflow (OpenClaw format)
         scripts/
-          audit.sh                   # Same audit script
+          audit.sh                   # Same health check script
 ```
 
 </details>
@@ -307,7 +372,6 @@ PRs welcome. Areas that need work:
 - Language-specific audit rules (linting config detection, test framework detection)
 - Git hook installation for commit message validation
 - CI/CD pipeline templates (GitHub Actions, GitLab CI)
-- Monorepo support (workspace-aware branching and versioning)
 - Changelog generation from conventional commits
 - Integration with more AI coding platforms
 

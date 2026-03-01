@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# DevForge Installer
-# Installs DevForge rules and skills into your AI coding platform.
+# Auto Version Control Installer
+# Installs version control rules and skills into your AI coding platform.
 #
 # Usage:
 #   ./install.sh                               # Interactive (same as setup.sh)
@@ -28,12 +28,12 @@ install_antigravity_global() {
 
 install_openclaw() {
     echo "Installing OpenClaw skills..."
-    DEST="$HOME/.openclaw/workspace/skills/dev-forge"
+    DEST="$HOME/.openclaw/workspace/skills/auto-version-control"
     mkdir -p "$DEST/scripts"
-    cp "$SCRIPT_DIR/.openclaw/skills/dev-forge/skill.md" "$DEST/skill.md"
-    cp "$SCRIPT_DIR/.openclaw/skills/dev-forge/scripts/audit.sh" "$DEST/scripts/audit.sh"
+    cp "$SCRIPT_DIR/.openclaw/skills/auto-version-control/skill.md" "$DEST/skill.md"
+    cp "$SCRIPT_DIR/.openclaw/skills/auto-version-control/scripts/audit.sh" "$DEST/scripts/audit.sh"
     chmod +x "$DEST/scripts/audit.sh"
-    echo "  Installed to ~/.openclaw/workspace/skills/dev-forge/"
+    echo "  Installed to ~/.openclaw/workspace/skills/auto-version-control/"
     INSTALLED=$((INSTALLED + 1))
 }
 

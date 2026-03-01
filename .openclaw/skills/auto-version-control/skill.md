@@ -1,8 +1,8 @@
-# Dev Forge
+# Auto Version Control
 
 ## Description
 
-Enforces professional development workflow on any software project. Ensures proper git branching, conventional commits, semantic versioning, clean code standards, and structured project organization.
+Automatic version control for AI coding agents. Handles git branching, conventional commits, semantic versioning, and project structure so the user doesn't have to think about it.
 
 ## Activation
 
